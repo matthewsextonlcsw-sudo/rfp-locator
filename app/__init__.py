@@ -1,0 +1,1 @@
+"""RFP Empire local application."""
