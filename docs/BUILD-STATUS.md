@@ -1,6 +1,6 @@
 # Foundation implementation status
 
-Build: 0.1.0, October 15, 2026. Scope requested for this increment: investigate source access and get the local application foundation working. The approved nationwide product requirements remain unchanged.
+Build: 0.1.1, October 15, 2026. Scope requested for this increment: investigate source access and get the local application foundation working. The approved nationwide product requirements remain unchanged.
 
 ## Working foundation
 
@@ -40,3 +40,9 @@ The test environment emits one upstream Starlette deprecation warning about its 
 5. Complete snapshot pagination, draft recovery, watch events, recovery/diagnostics, platform testing and signed installers.
 
 These remain requirements, not optional additions. See the [approved task list](planning/IMPLEMENTATION-TASKS.md); none of its cross-cutting tasks is marked wholly complete by this foundation increment.
+
+## Public preview distribution
+
+At the user's request, 0.1.1 adds a downloadable source ZIP with macOS/Windows first-run launchers and separate demo launchers. They fetch pinned uv from the official vendor, install managed Python as needed and sync the locked production dependencies. The app itself remains the local text-only foundation. This is not the M6 signed-installation release or a proof of binary parser isolation.
+
+`tools/smoke_install.py` checks a fresh source copy with spaces in its path, no application virtualenv, a separate managed Python installation and an empty dependency cache. It verifies authenticated demo search, static assets, reopening and graceful shutdown. `.github/workflows/checks.yml` runs that check and the browser/API suite on macOS arm64 and Windows x64. Results are recorded after the checks complete.

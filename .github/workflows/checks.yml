@@ -1,0 +1,26 @@
+name: Install and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: '0.11.6'
+      - run: uv sync --locked --group dev
+      - run: uv run playwright install chromium
+      - run: uv run pytest -q
+      - name: Fresh-download installation without preinstalled Python
+        run: uv run python tools/smoke_install.py
