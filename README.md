@@ -15,6 +15,8 @@ Windows uses the x64 uv build. First launch needs an internet connection and may
 
 **This is a source-based preview launcher, not a signed installer.** If your operating system or company policy blocks the downloaded script, use an approved development environment or ask your administrator; the app does not disable those protections. Signed/notarized installers remain planned. The app still has zero live bid feeds and does not calculate confidence scores.
 
+Verified: the 19-test browser/API suite and fresh-install check passed on **macOS 14 arm64** and **Windows Server 2025 x64** in [GitHub Actions](https://github.com/matthewsextonlcsw-sudo/rfp-locator/actions/runs/38829517311). Windows 11 desktop acceptance testing and signed installers are still pending.
+
 ### If setup does not finish
 
 - Read the message in the terminal. Check your connection and retry; already downloaded packages are reused.
